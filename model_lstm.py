@@ -9,7 +9,6 @@ clipnorm = 10
 units = 256
 
 
-
 def gen_model(input_dim=10, output_dim=8, batch_size=100):
     model_LSTM = Sequential()
     model_LSTM.name = "LSTM"
@@ -23,6 +22,7 @@ def gen_model(input_dim=10, output_dim=8, batch_size=100):
     model_LSTM.add(Activation('sigmoid'))
 
     sgd = Adam(lr=lr, clipnorm=clipnorm)
-    model_LSTM.compile(loss='binary_crossentropy', optimizer=sgd, metrics = ['binary_accuracy'], sample_weight_mode="temporal")
+    model_LSTM.compile(loss='binary_crossentropy', optimizer=sgd, metrics=[
+                       'binary_accuracy'], sample_weight_mode="temporal")
 
     return model_LSTM
